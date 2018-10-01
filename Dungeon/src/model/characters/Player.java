@@ -1,15 +1,16 @@
 package model.characters;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Player extends GameCharacter {
 
 	Integer turns;
-	HashMap<Integer, Integer> position;
+	ArrayList<Integer> position;
 	
 	public Player(Integer turns) {
 		this.turns = turns;
-		super.position.put(0, 0);
+		Collections.addAll(position, 0, 0);
 		this.position = super.position;
 	}
 	
@@ -27,14 +28,15 @@ public class Player extends GameCharacter {
 
 
 
-	public HashMap<Integer, Integer> getPosition() {
+	public ArrayList <Integer> getPosition() {
 		return position;
 	}
 
 
 
-	public void setPosition(Integer x, Integer y) {
-		this.position.put(x, y);
+	public void setPosition(ArrayList<Integer> position) {
+		this.position.clear();
+		this.position = position;
 	}
 
 

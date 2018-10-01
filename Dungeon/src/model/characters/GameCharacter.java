@@ -1,17 +1,18 @@
 package model.characters;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class GameCharacter {
 	
-	protected HashMap<Integer, Integer> position;
+	protected ArrayList<Integer> position;
 	
 //----------------------------------------------------
 // CONSTRUCTOR	
 
 	public GameCharacter() {
-		this.position = new HashMap<Integer, Integer>();
+		this.position = new ArrayList<Integer>();
 	}
 	
 	public abstract String getType();

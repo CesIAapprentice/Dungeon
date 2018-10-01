@@ -1,8 +1,6 @@
 package controller.characters;
 
-import java.util.HashMap;
-
-import model.characters.GameCharacter;
+import java.util.ArrayList;
 import model.characters.Player;
 
 public class ControllerPlayer implements Movable{
@@ -28,19 +26,12 @@ public class ControllerPlayer implements Movable{
 	}
 
 	@Override
-	public HashMap<Integer, Integer> getPosition(GameCharacter gameCharacter) {
-		Player player = (Player) gameCharacter;
+	public ArrayList<Integer> getPosition() {
 		return player.getPosition();
 	}
 
 	@Override
-	public void setPosition(GameCharacter gameCharacter, Integer x, Integer y) {
-		Player player = (Player) gameCharacter;
-		player.setPosition(x, y);
+	public void setPosition(ArrayList<Integer> position) {
+		player.setPosition(position);
 	}
-	
-
-	
-	
-	
 }

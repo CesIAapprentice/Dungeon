@@ -1,10 +1,11 @@
 package model.characters;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Vampire extends GameCharacter {
 	
-	HashMap<Integer, Integer> position;
+	ArrayList<Integer> position;
 
 	public Vampire() {
 		this.position = super.position;
@@ -12,14 +13,15 @@ public class Vampire extends GameCharacter {
 	
 	 
 
-	public HashMap<Integer, Integer> getPosition() {
+	public ArrayList<Integer> getPosition() {
 		return position;
 	}
 
 
 
 	public void setPosition(Integer x, Integer y) {
-		this.position.put(x, y);
+		this.position.clear();
+		Collections.addAll(this.position, x, y);
 	}
 
 
