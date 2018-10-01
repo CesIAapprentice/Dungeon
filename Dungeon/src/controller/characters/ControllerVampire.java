@@ -40,14 +40,15 @@ public class ControllerVampire implements Movable{
 	}
 
 	@Override
-	public HashMap<Integer, Integer> getPosition(GameCharacter gameCharacter) {
-		Vampire vampire = (Vampire) gameCharacter;
-		return vampire.getPosition();
+	public ArrayList<Integer> getPosition() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void setPosition(GameCharacter gameCharacter, Integer x, Integer y) {
-		Vampire vampire = (Vampire) gameCharacter;
-		vampire.setPosition(x,y);
-	}	
+	public void setPosition(ArrayList<Integer> position) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

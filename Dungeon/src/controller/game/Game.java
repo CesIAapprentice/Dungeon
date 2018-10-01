@@ -90,17 +90,13 @@ public class Game {
 	
 // MOVE
 	
-	public ArrayList<Integer> getPosition(GameCharacter gamecharacter){
-		return gamecharacter.getPosition();
-	}
-	
 	public boolean colision(Integer x, Integer y) {
 		Square square = getSquare(x, y);
 		return square.getGameCharacter() != null;
 	}
 	
 	public void movePlayer(String movement) {
-		ArrayList<Integer> position = getPosition(getPlayer());
+		ArrayList<Integer> position = getPlayer().getPosition();
 		Integer x = position.get(0);
 		Integer y = position.get(1);
 		String formattedMovement = movement.toLowerCase();
