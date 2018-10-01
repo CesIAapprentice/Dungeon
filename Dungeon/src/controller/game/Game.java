@@ -1,7 +1,7 @@
 package controller.game;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Random;
 
 import controller.boardgame.Boardgame;
@@ -9,7 +9,6 @@ import controller.boardgame.ControllerBoardgame;
 import controller.characters.ControllerPlayer;
 import controller.characters.ControllerVampire;
 import model.boardgame.Square;
-import model.characters.GameCharacter;
 import model.characters.Player;
 import model.characters.Vampire;
 
@@ -50,6 +49,10 @@ public class Game {
 		return row.get(y);
 	}
 	
+	public boolean isEmpty(Square square) {
+		return square.getGameCharacter() == null;
+	}
+	
 	
 // PLAYER	
 	public Player getPlayer() {
@@ -58,7 +61,9 @@ public class Game {
 	
 	public void initializePlayerPosition(Integer x, Integer y) {
 		Player player = getPlayer();
-		player.setPosition(x, y);
+		ArrayList<Integer> position = new ArrayList<Integer>();
+		Collections.addAll(position, x, y);
+		player.setPosition(position);
 		Square square = getSquare(x,y);
 		square.setGameCharacter(player);
 	}
@@ -74,12 +79,14 @@ public class Game {
 		ArrayList<Vampire> vampires = getVampires();
 		
 		for(Vampire vampire : vampires) {
+			ArrayList<Integer> position = new ArrayList<Integer>();
 			while(true) {
 				int x = this.random.nextInt(9);
 				int y = this.random.nextInt(9);
+				Collections.addAll(position, x, y);
 				Square square = getSquare(x, y);
-				if(square.getGameCharacter() == null) {
-					vampire.setPosition(x, y);
+				if(isEmpty(square)) {
+					vampire.setPosition(position);
 					square.setGameCharacter(vampire);
 					break;
 				}
@@ -107,7 +114,21 @@ public class Game {
 		ArrayList<Vampire> vampires = getVampires();
 		
 		for (Vampire vampire : vampires) {
+			ArrayList<Integer> vampirePosition = vampire.getPosition();
+			Integer x = vampirePosition.get(0);
+			Integer y = vampirePosition.get(1);
+			Random random = new Random();
+			Integer direction = random.nextInt(3);
 			
+			if(direction == 0) {
+				if( (y-1) > 0) {
+					Square testSquare = this.getSquare(x, y-1);
+					if(isEmpty(testSquare) || !colision(x,y-1)){
+						testSquare.setGameCharacter(vampire);
+						vampire.move(x, y-1);
+					}
+				}
+			}
 		}
 	}
 }

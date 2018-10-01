@@ -3,7 +3,7 @@ package controller.characters;
 import java.util.ArrayList;
 import model.characters.Player;
 
-public class ControllerPlayer implements Movable{
+public class ControllerPlayer{
 	
 	private Player player;
 	
@@ -23,15 +23,5 @@ public class ControllerPlayer implements Movable{
 
 	public void setPlayer(Player player) {
 		this.player = player;
-	}
-
-	@Override
-	public ArrayList<Integer> getPosition() {
-		return player.getPosition();
-	}
-
-	@Override
-	public void setPosition(ArrayList<Integer> position) {
-		player.setPosition(position);
 	}
 }

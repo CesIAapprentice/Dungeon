@@ -1,13 +1,11 @@
 package controller.characters;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Random;
 
-import model.characters.GameCharacter;
 import model.characters.Vampire;
 
-public class ControllerVampire implements Movable{
+public class ControllerVampire{
 	
 	ArrayList<Vampire> vampires;
 	
@@ -38,17 +36,12 @@ public class ControllerVampire implements Movable{
 	public void setVampires(ArrayList<Vampire> vampires) {
 		this.vampires = vampires;
 	}
-
-	@Override
-	public ArrayList<Integer> getPosition() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setPosition(ArrayList<Integer> position) {
-		// TODO Auto-generated method stub
-		
-	}
 	
+	public void moveVampires() {
+		ArrayList<Vampire> vampires = this.getVampires();
+		for (Vampire vampire : vampires) {
+			Random direction = new Random(3);
+			ArrayList<Integer> position = vampire.getPosition();
+		}
+	}
 }

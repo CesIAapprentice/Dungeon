@@ -15,5 +15,4 @@ public abstract class GameCharacter {
 		this.position = new ArrayList<Integer>();
 	}
 	
-	public abstract String getType();
 }
