@@ -14,5 +14,15 @@ public abstract class GameCharacter {
 	public GameCharacter() {
 		this.position = new ArrayList<Integer>();
 	}
+
+	public ArrayList<Integer> getPosition() {
+		return position;
+	}
+
+	public void setPosition(ArrayList<Integer> position) {
+		this.position = position;
+	}
+	
+	
 	
 }
