@@ -6,23 +6,32 @@ import java.util.Map;
 
 public abstract class GameCharacter {
 	
-	protected ArrayList<Integer> position;
+	protected Integer x;
+	protected Integer y;
 	
 //----------------------------------------------------
 // CONSTRUCTOR	
 
 	public GameCharacter() {
-		this.position = new ArrayList<Integer>();
 	}
 
-	public ArrayList<Integer> getPosition() {
-		return position;
+	public Integer getX() {
+		return x;
 	}
 
-	public void setPosition(ArrayList<Integer> position) {
-		this.position = position;
+	public void setX(Integer x) {
+		this.x = x;
 	}
-	
-	
-	
+
+	public Integer getY() {
+		return y;
+	}
+
+	public void setY(Integer y) {
+		this.y = y;
+	}
+
+	public void move(String direction, Integer quantity) {
+		
+	}
 }

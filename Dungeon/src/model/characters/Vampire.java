@@ -1,40 +1,54 @@
 package model.characters;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
-import controller.characters.Movable;
-
-public class Vampire extends GameCharacter implements Movable{
+public class Vampire extends GameCharacter {
 	
-	ArrayList<Integer> position;
+	private Integer x;
+	private Integer y;
 	
 // ------------------------------------------------------------
 // CONSTRUCTOR	
 
 	public Vampire() {
-		this.position = super.position;
+		
 	}
 	
 // ------------------------------------------------------------
 // METHODS	
 	
 	@Override
-	public void move(Integer x, Integer y) {
-		Integer oldX = this.getPosition().get(0);
-		Integer oldY = this.getPosition().get(1);
-		ArrayList<Integer> position = new ArrayList<Integer>();
-		Collections.addAll(position, oldX + x, oldY + y);
-		this.setPosition(position);
+	public void move(String direction, Integer quantity) {
+		if(direction.equals("w")) {
+			y -= 1;
+		}
+		
+		if(direction.equals("s")) {
+			y += 1;
+		}
+		
+		if(direction.equals("a")) {
+			x -= 1;
+		}
+		
+		if(direction.equals("d")) {
+			x += 1;
+		}
+	}
+
+	public Integer getX() {
+		return x;
+	}
+
+	public void setX(Integer x) {
+		this.x = x;
+	}
+
+	public Integer getY() {
+		return y;
+	}
+
+	public void setY(Integer y) {
+		this.y = y;
 	}
 	
-	public ArrayList<Integer> getPosition() {
-		return position;
-	}
-
-	public void setPosition(ArrayList<Integer> position) {
-		this.position = position;
-	}
-
-
+	
 }
