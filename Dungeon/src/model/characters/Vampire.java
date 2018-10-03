@@ -49,6 +49,4 @@ public class Vampire extends GameCharacter {
 	public void setY(Integer y) {
 		this.y = y;
 	}
-	
-	
 }

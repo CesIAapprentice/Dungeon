@@ -3,19 +3,24 @@ package controller.characters;
 import java.util.ArrayList;
 import java.util.Random;
 
+import controller.boardgame.Boardgame;
 import controller.boardgame.ControllerBoardgame;
 import model.boardgame.Square;
 import model.characters.Vampire;
 
 public class ControllerVampire{
 	
+	Boardgame boardgame;
 	ArrayList<Vampire> vampires;
+	Vampiremove vampiremove;
 	Random random;
 	
 //----------------------------------------------------
 // CONSTRUCTOR	
 
-	public ControllerVampire() {
+	public ControllerVampire(Boardgame boardgame) {
+		this.boardgame = boardgame;
+		this.vampiremove = new Vampiremove(boardgame);
 		this.vampires = new ArrayList<Vampire>();
 		this.random = new Random();
 	}
@@ -43,32 +48,56 @@ public class ControllerVampire{
 	
 	public void moveVampires(ControllerBoardgame controllerboardgame) {
 		for (Vampire vampire : vampires) {
-			Integer direction = random.nextInt(4);
-			Integer x = vampire.getPosition().get(0);
-			Integer y = vampire.getPosition().get(1);
+			while(true) {
+				
+				//Where to move	
+				Integer direction = random.nextInt(4);
+				String[] formattedDirection = {"w", "s", "a", "d"}; 
 			
-			if(direction == 0) {
-				y -= 1;
-				if(y > 0) {
-					y +=10;
-				}
-			}
+				// where is the Vampire
+				Integer x = vampire.getX();
+				Integer y = vampire.getY();
 			
-			if(direction == 0) {
-				y -= 1;
-				if(y > 0) {
-					y +=10;
-				}
-			}
-			
-			
-					Square testSquare = controllerboardgame.getSquare(x, y);
-					if(controllerboardgame.whosOnThisSquare(testSquare).equals("null")) {
-						testSquare.setGameCharacter(vampire);
-						vampire.move(x, y);
+				// match 360º movement
+				if(direction == 0) {
+					y -= 1;
+					if(y < 0) {
+						y +=10;
 					}
-					
-					if(whosOnThisSquare(testSquare).equals("null")) {
+				}
+			
+				if(direction == 1) {
+					y += 1;
+					if(y > 9) {
+						y -=10;
+					}
+				}
+			
+				if(direction == 2) {
+					x -= 1;
+					if(x < 0) {
+						x +=10;
+					}
+				}
+			
+				if(direction == 3) {
+					x += 1;
+					if(x > 9) {
+						x -=10;
+					}
+				}
+			
+				//Test for moving only a valid move
+				Square testSquare = controllerboardgame.getSquare(x, y);
+				if(controllerboardgame.whosOnThisSquare(testSquare).equals("null")) {
+					testSquare.setGameCharacter(vampire);
+					vampire.move(formattedDirection[x], 1);
+					break;
+				}
+				
+				if(controllerboardgame.whosOnThisSquare(testSquare).equals("player")) {
+					this.getVampires().remove(vampire);
+					break;
 				}
 			}
 		}
