@@ -5,10 +5,10 @@ import java.util.Collections;
 
 import controller.characters.Movable;
 
-public class Player extends GameCharacter implements Movable{
+public class Player extends GameCharacter{
 
-	Integer turns;
-	ArrayList<Integer> position;
+	private Integer turns;
+	private Integer x, y;
 	
 //---------------------------------------------------------------------
 // CONSTRUCTOR	
